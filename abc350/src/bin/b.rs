@@ -13,12 +13,20 @@ use std::cmp::{max, min};
 use std::collections::{HashMap, HashSet, VecDeque};
 #[allow(unused_imports)]
 use std::iter::FromIterator;
+use std::usize;
 
 #[fastout]
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    input! {
+        n: usize, q: usize,
+        ope_ts: [usize; q],
     }
+
+    let mut ts = vec![true; n];
+
+    ope_ts
+        .iter()
+        .for_each(|ope_t| ts[ope_t - 1] = !ts[ope_t - 1]);
+
+    print!("{}", ts.iter().filter(|&&t| t).count());
 }
