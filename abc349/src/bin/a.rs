@@ -16,9 +16,10 @@ use std::iter::FromIterator;
 
 #[fastout]
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    input! {
+        n: usize,
+        point_list: [isize; n - 1],
     }
+
+    print!("{}", -point_list.iter().sum::<isize>());
 }
