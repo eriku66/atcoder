@@ -19,14 +19,16 @@ use std::usize;
 fn main() {
     input! {
         n: usize, q: usize,
-        ope_ts: [usize; q],
+        ope_teeth: [usize; q],
     }
 
-    let mut ts = vec![true; n];
+    let mut teeth_exists = vec![true; n + 1];
 
-    ope_ts
-        .iter()
-        .for_each(|ope_t| ts[ope_t - 1] = !ts[ope_t - 1]);
+    teeth_exists[0] = false;
 
-    print!("{}", ts.iter().filter(|&&t| t).count());
+    for ope_tooth in ope_teeth {
+        teeth_exists[ope_tooth] = !teeth_exists[ope_tooth];
+    }
+
+    print!("{}", teeth_exists.iter().filter(|&t| *t).count());
 }
