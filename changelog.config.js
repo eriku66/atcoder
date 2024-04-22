@@ -1,7 +1,7 @@
 module.exports = {
   disableEmoji: false,
   format: '{type}{scope}: {emoji}{subject}',
-  list: ['solve', 'fix', 'chore', 'docs', 'refactor', 'perf'],
+  list: ['solve', 'refactor', 'add', 'fix', 'chore', 'docs', 'perf'],
   maxMessageLength: 64,
   minMessageLength: 3,
   questions: ['type', 'scope', 'subject', 'body'],
@@ -21,6 +21,11 @@ module.exports = {
       description: 'Solve a problem',
       emoji: '🤩',
       value: 'solve'
+    },
+    add: {
+      description: 'Add problems',
+      emoji: '🗃️',
+      value: 'add'
     },
     fix: {
       description: 'A bug fix',
