@@ -16,9 +16,15 @@ use std::iter::FromIterator;
 
 #[fastout]
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    input! {
+        n: usize,
+    }
+
+    for i in 1..n + 1 {
+        if i % 3 == 0 {
+            print!("x");
+        } else {
+            print!("o");
+        }
     }
 }
