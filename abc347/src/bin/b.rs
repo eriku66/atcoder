@@ -16,9 +16,19 @@ use std::iter::FromIterator;
 
 #[fastout]
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    input! {
+        s: Chars
     }
+
+    let length = s.len();
+
+    let mut selected_strings: HashSet<String> = HashSet::new();
+
+    for len in 1..=length {
+        s.windows(len).for_each(|chars| {
+            selected_strings.insert(chars.iter().collect());
+        });
+    }
+
+    print!("{}", selected_strings.len());
 }
