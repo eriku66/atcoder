@@ -21,17 +21,12 @@ fn main() {
         a_list: [usize; n],
     }
 
-    let mut is_printed = false;
-
-    for a in a_list {
-        if a != 0 && a % k == 0 {
-            if is_printed {
-                print!(" ");
-            }
-
-            print!("{}", a / k);
-
-            is_printed = true;
-        }
-    }
+    print!(
+        "{}",
+        a_list
+            .iter()
+            .filter(|&&a| a != 0 && a % k == 0)
+            .map(|a| a / k)
+            .join(" ")
+    );
 }
