@@ -1,4 +1,5 @@
 testcases/
+Cargo.toml
 d.rs
 e.rs
 f.rs
