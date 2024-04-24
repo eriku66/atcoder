@@ -16,9 +16,22 @@ use std::iter::FromIterator;
 
 #[fastout]
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    input! {
+        n: usize, k: usize,
+        a_list: [usize; n],
+    }
+
+    let mut is_printed = false;
+
+    for a in a_list {
+        if a != 0 && a % k == 0 {
+            if is_printed {
+                print!(" ");
+            }
+
+            print!("{}", a / k);
+
+            is_printed = true;
+        }
     }
 }
