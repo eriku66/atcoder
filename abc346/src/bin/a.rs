@@ -16,7 +16,10 @@ use std::iter::FromIterator;
 
 #[fastout]
 fn main() {
-    input!{
+    input! {
         n: usize,
+        a_list: [usize; n]
     }
+
+    print!("{}", a_list.windows(2).map(|a| a[0] * a[1]).join(" "));
 }
