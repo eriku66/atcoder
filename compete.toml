@@ -40,7 +40,7 @@ use std::iter::FromIterator;
 
 #[fastout]
 fn main() {
-    input!{
+    input! {
         n: usize,
     }
 }
