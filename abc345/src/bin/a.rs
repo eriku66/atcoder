@@ -17,6 +17,20 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        n: usize,
+        s: Chars
     }
+
+    let s_length = s.len();
+
+    print!(
+        "{}",
+        if s[0] == '<'
+            && s[s_length - 1] == '>'
+            && (s_length == 2 || s_length > 2 && s[1..(s_length - 1)].iter().all(|&c| c == '='))
+        {
+            "Yes"
+        } else {
+            "No"
+        }
+    );
 }
