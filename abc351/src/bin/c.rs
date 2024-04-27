@@ -21,7 +21,7 @@ fn main() {
         a_list: [usize; n]
     }
 
-    let mut list: Vec<usize> = Vec::new();
+    let mut list: Vec<usize> = Vec::with_capacity(n);
 
     for a in a_list {
         list.push(a);
@@ -33,11 +33,8 @@ fn main() {
                 break;
             }
 
-            let sum = list[length - 1] + 1;
-
             list.pop();
-            list.pop();
-            list.push(sum);
+            *list.last_mut().unwrap() += 1;
         }
     }
 
