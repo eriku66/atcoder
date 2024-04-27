@@ -1,7 +1,7 @@
 module.exports = {
   disableEmoji: false,
   format: '{type}{scope}: {emoji}{subject}',
-  list: ['solve', 'refactor', 'add', 'fix', 'chore', 'docs', 'perf'],
+  list: ['solve', 'refactor', 'add', 'participation', 'fix', 'chore', 'docs', 'perf'],
   maxMessageLength: 64,
   minMessageLength: 3,
   questions: ['type', 'scope', 'subject', 'body'],
@@ -26,6 +26,11 @@ module.exports = {
       description: 'Add problems',
       emoji: '🗃️',
       value: 'add'
+    },
+    participation: {
+      description: 'Contest participation',
+      emoji: '🥳',
+      value: 'participation'
     },
     fix: {
       description: 'A bug fix',
@@ -53,4 +58,3 @@ module.exports = {
     },
   }
 };
-
