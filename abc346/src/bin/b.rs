@@ -16,7 +16,36 @@ use std::iter::FromIterator;
 
 #[fastout]
 fn main() {
-    input!{
-        n: usize,
+    input! {
+        mut w: usize,
+        mut b: usize,
     }
+
+    let n = w + b;
+
+    let s = "wbwbwwbwbwbw";
+
+    let length = s.len();
+
+    let t = s.chars().cycle().take(200 + length).collect::<Vec<char>>();
+
+    for start_i in 0..s.len() {
+        let mut w_count = 0;
+        let mut b_count = 0;
+
+        for i in 0..n {
+            if t[start_i + i] == 'w' {
+                w_count += 1;
+            } else {
+                b_count += 1;
+            }
+        }
+
+        if w_count == w && b_count == b {
+            print!("Yes");
+            return;
+        }
+    }
+
+    print!("No");
 }
