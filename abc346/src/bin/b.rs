@@ -23,18 +23,16 @@ fn main() {
 
     let n = w + b;
 
-    let s = "wbwbwwbwbwbw";
+    let s = "wbwbwwbwbwbw".chars().collect::<Vec<char>>();
 
     let length = s.len();
 
-    let t = s.chars().cycle().take(200 + length).collect::<Vec<char>>();
-
-    for start_i in 0..s.len() {
+    for start_i in 0..length {
         let mut w_count = 0;
         let mut b_count = 0;
 
         for i in 0..n {
-            if t[start_i + i] == 'w' {
+            if s[(start_i + i) % length] == 'w' {
                 w_count += 1;
             } else {
                 b_count += 1;
