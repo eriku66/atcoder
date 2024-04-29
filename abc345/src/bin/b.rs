@@ -1,5 +1,6 @@
 #[allow(unused_imports)]
 use itertools::{iproduct, Itertools};
+use num::{BigInt, BigRational};
 #[allow(unused_imports)]
 use num_traits::pow;
 #[allow(unused_imports)]
@@ -17,6 +18,8 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        n: usize,
+        x: BigInt,
     }
+
+    print!("{}", BigRational::new(x, BigInt::from(10)).ceil());
 }
