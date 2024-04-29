@@ -1,7 +1,7 @@
 module.exports = {
   disableEmoji: false,
   format: '{type}{scope}: {emoji}{subject}',
-  list: ['solve', 'refactor', 'add', 'participation', 'fix', 'chore', 'docs', 'perf'],
+  list: ['solve', 'study', 'refactor', 'add', 'compete', 'fix', 'chore', 'docs', 'perf'],
   maxMessageLength: 64,
   minMessageLength: 3,
   questions: ['type', 'scope', 'subject', 'body'],
@@ -9,28 +9,33 @@ module.exports = {
   types: {
     chore: {
       description: 'Build process or auxiliary tool changes',
-      emoji: '🛠️',
+      emoji: '🛠️ ',
       value: 'chore'
     },
     docs: {
       description: 'Documentation only changes',
-      emoji: '🖊️',
+      emoji: '🖊️ ',
       value: 'docs'
     },
     solve: {
-      description: 'Solve a problem',
+      description: 'Solve the problem',
       emoji: '🤩',
       value: 'solve'
     },
+    study: {
+      description: 'Solve the problems with reference to the explanations',
+      emoji: '🧐',
+      value: 'study'
+    },
     add: {
       description: 'Add problems',
-      emoji: '🗃️',
+      emoji: '🗃️ ',
       value: 'add'
     },
-    participation: {
-      description: 'Contest participation',
+    compete: {
+      description: 'Contest in the contest',
       emoji: '🥳',
-      value: 'participation'
+      value: 'compete'
     },
     fix: {
       description: 'A bug fix',
