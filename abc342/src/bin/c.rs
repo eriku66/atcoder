@@ -17,22 +17,26 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        _: usize,
-        mut s: String,
+        _n: usize,
+        mut s: Chars,
         q: usize,
-        c_d_list: [(String, String); q],
+        c_d_list: [(char, char); q],
     }
 
-    let mut l = ('a'..='z').collect::<String>();
+    let mut l: Vec<char> = ('a'..='z').collect();
 
-    for (c, d) in c_d_list.iter() {
-        l = l.replace(c, d);
+    for (c, d) in c_d_list {
+        for a in l.iter_mut() {
+            if *a == c {
+                *a = d;
+            }
+        }
     }
 
     println!(
         "{}",
-        s.bytes()
-            .map(|b| l.chars().nth((b - b'a') as usize).unwrap())
+        s.iter()
+            .map(|&b| l[(b as u8 - b'a') as usize])
             .collect::<String>()
     );
 }
