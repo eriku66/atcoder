@@ -21,17 +21,12 @@ fn main() {
         t: Chars,
     }
 
-    let mut l = Vec::with_capacity(s.len());
+    let mut si = 0;
 
     for (i, c) in t.iter().enumerate() {
-        if let Some(f) = s.first() {
-            if c == f {
-                l.push(i + 1);
-                let (_, b) = s.split_first().unwrap();
-                s = b.to_vec();
-            }
+        if s[si] == *c {
+            print!("{} ", i + 1);
+            si += 1;
         }
     }
-
-    print!("{}", l.iter().join(" "));
 }
