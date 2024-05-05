@@ -18,5 +18,21 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        a_list: [usize; n],
     }
+
+    let a_len = a_list.len();
+
+    for i in 0..a_len {
+        for ii in i + 1..a_len {
+            for iii in ii + 1..a_len {
+                if a_list[i] + a_list[ii] + a_list[iii] == 1000 {
+                    print!("Yes");
+                    return;
+                }
+            }
+        }
+    }
+
+    print!("No");
 }

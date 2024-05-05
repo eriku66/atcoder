@@ -18,5 +18,19 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        k: usize,
+        p_list: [usize; n],
+        q_list: [usize; n],
     }
+
+    for &p in &p_list {
+        for &q in &q_list {
+            if p + q == k {
+                print!("Yes");
+                return;
+            }
+        }
+    }
+
+    print!("No");
 }

@@ -19,4 +19,6 @@ fn main() {
     input! {
         n: usize,
     }
+
+    print!("{}", n.pow(2));
 }

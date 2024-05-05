@@ -17,6 +17,15 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        n: usize,
+        mut n: usize,
+    }
+
+    // My solution
+    for i in (0..10).rev() {
+        let d = 2usize.pow(i);
+
+        print!("{}", n.div_euclid(d));
+
+        n %= d;
     }
 }

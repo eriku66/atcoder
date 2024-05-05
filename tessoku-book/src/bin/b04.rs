@@ -17,6 +17,15 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        n: usize,
+        n: Chars,
     }
+
+    print!(
+        "{}",
+        n.iter()
+            .rev()
+            .enumerate()
+            .map(|(i, &c)| (c.to_digit(10).unwrap() * 2u32.pow(i as u32)))
+            .sum::<u32>()
+    );
 }

@@ -17,6 +17,16 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        n: usize,
+        n: usize, x: usize,
+        a_list: [usize; n],
     }
+
+    print!(
+        "{}",
+        if a_list.iter().any(|&a| a == x) {
+            "Yes"
+        } else {
+            "No"
+        }
+    );
 }
