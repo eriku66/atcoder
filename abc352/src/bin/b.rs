@@ -22,11 +22,14 @@ fn main() {
     }
 
     let mut si = 0;
+    let mut l = Vec::with_capacity(s.len());
 
     for (i, c) in t.iter().enumerate() {
         if s[si] == *c {
-            print!("{} ", i + 1);
+            l.push(i + 1);
             si += 1;
         }
     }
+
+    print!("{}", l.iter().join(" "));
 }
