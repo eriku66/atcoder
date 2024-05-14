@@ -18,5 +18,19 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        q: usize,
+        a_list: [usize; n],
+        l_q_list: [(usize, usize); q],
+    }
+
+    let mut total_list = Vec::with_capacity(n + 1);
+    total_list.push(0);
+
+    for (i, &a) in a_list.iter().enumerate() {
+        total_list.push(total_list[i] + a);
+    }
+
+    for (l, q) in l_q_list {
+        println!("{}", total_list[q] - total_list[l - 1]);
     }
 }
