@@ -22,15 +22,17 @@ fn main() {
         l_r_list: [(usize, usize); n],
     }
 
-    let mut set = vec![0; d];
+    let mut diffs = vec![0; d + 1];
 
     for (l, r) in l_r_list {
-        for c in set.iter_mut().skip(l - 1).take(r - l + 1) {
-            *c += 1;
-        }
+        diffs[l - 1] += 1;
+        diffs[r] -= 1;
     }
 
-    for c in set {
-        println!("{}", c)
+    let mut current = 0;
+
+    for diff in diffs.iter().take(d) {
+        current += diff;
+        println!("{}", current);
     }
 }
