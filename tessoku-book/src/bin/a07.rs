@@ -17,6 +17,20 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
+        d: usize,
         n: usize,
+        l_r_list: [(usize, usize); n],
+    }
+
+    let mut set = vec![0; d];
+
+    for (l, r) in l_r_list {
+        for c in set.iter_mut().skip(l - 1).take(r - l + 1) {
+            *c += 1;
+        }
+    }
+
+    for c in set {
+        println!("{}", c)
     }
 }
