@@ -23,11 +23,20 @@ fn main() {
 
     let mut grid = vec![vec![0; w]; h];
 
-    for i in 0..h {
-        for j in 0..w {
-            input! {s: usize}
+    for row in grid.iter_mut() {
+        let mut total = 0;
 
-            grid[i][j] = if j == 0 { s } else { grid[i][j - 1] + s };
+        for c in row {
+            input! {s: usize}
+            total += s;
+
+            *c = total;
+        }
+    }
+
+    for i in 1..h {
+        for j in 0..w {
+            grid[i][j] += grid[i - 1][j];
         }
     }
 
@@ -43,12 +52,16 @@ fn main() {
             d: usize,
         }
 
-        let mut ans = 0;
-
-        for row in grid.iter().skip(a - 1).take(c - a + 1) {
-            ans += row[d - 1] - if b >= 2 { row[b - 2] } else { 0 };
-        }
-
-        println!("{}", ans);
+        println!(
+            "{}",
+            grid[c - 1][d - 1]
+                + if a >= 2 && b >= 2 {
+                    grid[a - 2][b - 2]
+                } else {
+                    0
+                }
+                - if a >= 2 { grid[a - 2][d - 1] } else { 0 }
+                - if b >= 2 { grid[c - 1][b - 2] } else { 0 }
+        );
     }
 }
