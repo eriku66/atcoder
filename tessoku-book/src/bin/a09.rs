@@ -26,24 +26,26 @@ fn main() {
     let mut grid = vec![vec![0; w + 2]; h + 2];
 
     for (a, b, c, d) in abcd_list {
-        for row in grid.iter_mut().skip(a).take(c - a + 1) {
-            row[b] += 1;
-            row[d + 1] -= 1;
+        grid[a][b] += 1;
+        grid[a][d + 1] -= 1;
+        grid[c + 1][b] -= 1;
+        grid[c + 1][d + 1] += 1;
+    }
+
+    for i in 1..=h {
+        let mut t = 0;
+
+        for j in 1..=w {
+            if grid[i][j] == 0 {
+                grid[i][j] += grid[i - 1][j] + t;
+            } else {
+                t += grid[i][j];
+                grid[i][j] = grid[i - 1][j] + t;
+            }
         }
     }
 
     for row in grid.iter().skip(1).take(h) {
-        let mut t = 0;
-        println!(
-            "{}",
-            row.iter()
-                .skip(1)
-                .take(w)
-                .map(|&c| {
-                    t += c;
-                    t
-                })
-                .join(" ")
-        );
+        println!("{}", row.iter().skip(1).take(w).join(" "));
     }
 }
