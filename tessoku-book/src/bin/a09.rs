@@ -36,12 +36,11 @@ fn main() {
         let mut t = 0;
 
         for j in 1..=w {
-            if grid[i][j] == 0 {
-                grid[i][j] += grid[i - 1][j] + t;
-            } else {
+            if grid[i][j] != 0 {
                 t += grid[i][j];
-                grid[i][j] = grid[i - 1][j] + t;
             }
+
+            grid[i][j] = grid[i - 1][j] + t;
         }
     }
 
