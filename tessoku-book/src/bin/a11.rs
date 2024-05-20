@@ -24,18 +24,18 @@ fn main() {
     }
 
     let mut l = 0;
-    let mut r = n;
+    let mut r = n - 1;
 
     loop {
-        let i = (r + l) / 2;
+        let m = (r + l) / 2;
 
-        match x.cmp(&a_list[i]) {
+        match x.cmp(&a_list[m]) {
             Ordering::Equal => {
-                println!("{}", i + 1);
+                println!("{}", m + 1);
                 break;
             }
-            Ordering::Greater => l = i,
-            Ordering::Less => r = i,
+            Ordering::Greater => l = m + 1,
+            Ordering::Less => r = m - 1,
         }
     }
 }
