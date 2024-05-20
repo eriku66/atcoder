@@ -18,5 +18,20 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        mut a_list: [usize; n],
+        q: usize,
+        u_list: [usize; q],
+    }
+
+    a_list.sort_unstable();
+
+    for u in u_list {
+        println!(
+            "{}",
+            match a_list.binary_search(&u) {
+                Ok(i) => i,
+                Err(i) => i,
+            }
+        );
     }
 }
