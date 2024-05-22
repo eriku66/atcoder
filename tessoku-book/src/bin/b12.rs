@@ -21,19 +21,17 @@ fn main() {
         n: f64,
     }
 
-    let mut l = 0.001;
+    const MIN_DIFF: f64 = 0.001;
+
+    let mut l = MIN_DIFF;
     let mut r = n / 2.0;
 
-    while r - l > 0.001 {
+    while r - l > MIN_DIFF {
         let x = (l + r) / 2.0;
 
         match n.total_cmp(&(x.powf(3.0) + x)) {
-            Ordering::Greater => l = x + 0.001,
-            Ordering::Less => r = x - 0.001,
-            Ordering::Equal => {
-                print!("{}", x);
-                return;
-            }
+            Ordering::Greater => l = x + MIN_DIFF,
+            _ => r = x - MIN_DIFF,
         }
     }
 
