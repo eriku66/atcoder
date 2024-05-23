@@ -18,5 +18,21 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        k: usize,
+        a_list: [usize; n],
     }
+
+    let mut ans = 0;
+
+    let mut r = 0;
+
+    for l in 0..n {
+        while r < n - 1 && a_list[r + 1] - a_list[l] <= k {
+            r += 1;
+        }
+
+        ans += r - l;
+    }
+
+    print!("{}", ans);
 }
