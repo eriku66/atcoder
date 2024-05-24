@@ -21,14 +21,15 @@ fn main() {
         s: Chars,
     }
 
-    let mut map = HashMap::with_capacity(26);
+    let mut map: HashMap<char, usize> = HashMap::with_capacity(26);
 
     let mut cnt = 1;
 
     for i in 0..n {
         if i == n - 1 || s[i] != s[i + 1] {
-            let max = map.entry(s[i]).or_insert(0);
-            *max = (*max).max(cnt);
+            map.entry(s[i])
+                .and_modify(|v| *v = (*v).max(cnt))
+                .or_insert(cnt);
             cnt = 1;
         } else {
             cnt += 1;
