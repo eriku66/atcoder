@@ -35,22 +35,17 @@ fn main() {
             return;
         }
 
-        if grid.iter().all(|low| low[j]) {
+        if grid.iter().all(|row| row[j]) {
             print!("{}", d + 1);
             return;
         }
 
-        if i == j {
-            if a - 1 == (n.pow(2) - 1) / 2
-                && ((0..n).all(|x| grid[x][x]) || (0..n).all(|x| grid[x][n - x - 1]))
-            {
-                print!("{}", d + 1);
-                return;
-            } else if (0..n).all(|x| grid[x][x]) {
-                print!("{}", d + 1);
-                return;
-            }
-        } else if j == n - i - 1 && (0..n).all(|x| grid[x][n - x - 1]) {
+        if i == j && (0..n).all(|x| grid[x][x]) {
+            print!("{}", d + 1);
+            return;
+        }
+
+        if j == n - i - 1 && (0..n).all(|x| grid[x][n - x - 1]) {
             print!("{}", d + 1);
             return;
         }
