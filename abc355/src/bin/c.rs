@@ -19,34 +19,29 @@ fn main() {
     input! {
         n: usize,
         t: usize,
-        a_list: [usize; t],
+        a_list: [Usize1; t],
     }
 
-    let mut grid = vec![vec![false; n]; n];
+    let mut rows = vec![0; n];
+    let mut cols = vec![0; n];
+    let mut lines = vec![0; 2];
 
-    for (d, &a) in a_list.iter().enumerate() {
-        let i = (a - 1) / n;
-        let j = (a - 1) % n;
+    for (index, &a) in a_list.iter().enumerate() {
+        let (i, j) = (a / n, a % n);
 
-        grid[i][j] = true;
+        rows[i] += 1;
+        cols[j] += 1;
 
-        if grid[i].iter().all(|&c| c) {
-            print!("{}", d + 1);
-            return;
+        if i == j {
+            lines[0] += 1;
         }
 
-        if grid.iter().all(|row| row[j]) {
-            print!("{}", d + 1);
-            return;
+        if i + j == n - 1 {
+            lines[1] += 1;
         }
 
-        if i == j && (0..n).all(|x| grid[x][x]) {
-            print!("{}", d + 1);
-            return;
-        }
-
-        if j == n - i - 1 && (0..n).all(|x| grid[x][n - x - 1]) {
-            print!("{}", d + 1);
+        if rows[i] == n || cols[j] == n || lines[0] == n || lines[1] == n {
+            print!("{}", index + 1);
             return;
         }
     }
