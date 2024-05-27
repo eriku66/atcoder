@@ -25,19 +25,20 @@ fn main() {
 
     for (i, &d) in d_list.iter().enumerate() {
         let m = i + 1;
+        let digits = m.to_string().chars().collect_vec();
 
         if !m.to_string().chars().all_equal() {
             continue;
         }
 
-        let m1 = m.to_string().chars().next().unwrap().to_digit(10).unwrap() as usize;
+        let m1 = digits[0].to_digit(10).unwrap() as usize;
         let mut day = m1;
-        let mut cnt = 1;
+        let mut factor = 1;
 
         while d >= day {
             ans += 1;
-            day += m1 * 10usize.pow(cnt);
-            cnt += 1;
+            factor *= 10;
+            day += m1 * factor;
         }
     }
 
