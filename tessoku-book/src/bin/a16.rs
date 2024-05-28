@@ -23,7 +23,6 @@ fn main() {
     }
 
     let mut dp = vec![0; n];
-    dp[0] = 0;
     dp[1] = a_list[0];
 
     for i in 2..n {
