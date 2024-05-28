@@ -24,15 +24,14 @@ fn main() {
     }
 
     let mut cnt = 0;
-    let mut front = '.';
     let mut sum_list = Vec::with_capacity(n);
+    sum_list.push(0);
 
-    for c in s.chars() {
-        if c == front {
+    for (a, b) in s.bytes().tuple_windows() {
+        if a == b {
             cnt += 1;
         }
 
-        front = c;
         sum_list.push(cnt);
     }
 
