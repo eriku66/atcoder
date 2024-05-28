@@ -22,15 +22,12 @@ fn main() {
         b_list: [usize; n - 2],
     }
 
-    let mut dp = vec![usize::MAX; n];
+    let mut dp = vec![0; n];
     dp[0] = 0;
+    dp[1] = a_list[0];
 
-    for i in 1..n {
-        dp[i] = dp[i].min(dp[i - 1] + a_list[i - 1]);
-
-        if i >= 2 {
-            dp[i] = dp[i].min(dp[i - 2] + b_list[i - 2]);
-        }
+    for i in 2..n {
+        dp[i] = min(dp[i - 1] + a_list[i - 1], dp[i - 2] + b_list[i - 2]);
     }
 
     print!("{}", dp.last().unwrap());
