@@ -23,30 +23,28 @@ fn main() {
         b_list: [usize; n - 2],
     }
 
-    let mut dp = vec![0; n];
-    dp[1] = a_list[0];
+    let mut dp = vec![0; n + 1];
+    dp[2] = a_list[0];
 
-    for i in 2..n {
-        dp[i] = min(dp[i - 1] + a_list[i - 1], dp[i - 2] + b_list[i - 2]);
+    for i in 3..=n {
+        dp[i] = min(dp[i - 1] + a_list[i - 2], dp[i - 2] + b_list[i - 3]);
     }
 
-    let mut ans = vec![dp.len()];
+    let mut ans = Vec::with_capacity(n);
 
-    let mut i = dp.len() - 1;
+    let mut i = n;
 
-    while i >= 2 {
-        if dp[i] - dp[i - 1] == a_list[i - 1] {
-            ans.push(i);
+    while i > 1 {
+        ans.push(i);
+
+        if dp[i] - dp[i - 1] == a_list[i - 2] {
             i -= 1;
         } else {
-            ans.push(i - 1);
             i -= 2;
         }
     }
 
-    if *ans.last().unwrap() != 1 {
-        ans.push(1);
-    }
+    ans.push(1);
 
     println!("{}", ans.len());
     println!("{}", ans.iter().rev().join(" "));
