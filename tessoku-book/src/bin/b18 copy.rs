@@ -41,21 +41,22 @@ fn main() {
 
     let mut ans = Vec::with_capacity(n);
 
-    if let Some(first_match_index) = dp.iter().position(|row| row[s]) {
-        let mut reft = s;
-        let mut i = first_match_index;
-
-        while reft > 0 {
-            if !dp[i - 1][reft] {
-                ans.push(i);
-                reft -= a_list[i - 1];
-            }
-
-            i -= 1;
-        }
-    } else {
+    if !dp[n][s] {
         print!("-1");
         return;
+    }
+
+    let mut reft = s;
+    let mut i = n;
+
+    // 最初にtrueになったAを選択する必要がある
+    while reft > 0 {
+        if !dp[i - 1][reft] {
+            ans.push(i);
+            reft -= a_list[i - 1];
+        }
+
+        i -= 1;
     }
 
     println!("{}", ans.len());
