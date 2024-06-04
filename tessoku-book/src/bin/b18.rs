@@ -18,5 +18,7 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        s: usize,
+        a_list: [usize; n],
     }
 }
