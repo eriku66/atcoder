@@ -25,17 +25,13 @@ fn main() {
     let mut dp = vec![vec![0; max_weight + 1]; n + 1];
 
     for (i, &(w, v)) in wv_list.iter().enumerate() {
-        let mut new_row = vec![0; max_weight + 1];
-
-        for (j, &c) in dp[i].iter().enumerate() {
-            new_row[j] = new_row[j].max(c);
+        for j in 0..=max_weight {
+            dp[i + 1][j] = dp[i + 1][j].max(dp[i][j]);
 
             if max_weight >= j + w {
-                new_row[j + w] = c + v;
+                dp[i + 1][j + w] = dp[i][j] + v;
             }
         }
-
-        dp[i + 1] = new_row;
     }
 
     print!("{}", dp[n].iter().max().unwrap());
