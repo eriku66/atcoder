@@ -14,9 +14,9 @@ use std::collections::{HashMap, HashSet, VecDeque};
 #[allow(unused_imports)]
 use std::iter::FromIterator;
 
-#[fastout]
 fn main() {
     input! {
-        n: usize,
+        s: Chars,
+        t: Chars,
     }
 }
