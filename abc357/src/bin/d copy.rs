@@ -22,6 +22,15 @@ fn main() {
         n: u64,
     }
 
+    // 公比
     let r = ModInt998244353::new(10usize.pow(n.ilog10() + 1));
-    print!("{}", (r.pow(n) - 1) * n / (r - 1));
+
+    /**
+     * 等比数列の和の公式 S = a(r^n - 1) / r - 1
+     *
+     * a: 初項
+     * r: 公比
+     * n: 項数
+     */
+    print!("{}", n * (r.pow(n) - 1) / (r - 1));
 }
