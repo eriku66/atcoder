@@ -1,5 +1,6 @@
 #[allow(unused_imports)]
 use itertools::{iproduct, Itertools};
+use num_integer::{gcd, lcm};
 #[allow(unused_imports)]
 use num_traits::pow;
 #[allow(unused_imports)]
@@ -17,6 +18,11 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        n: usize,
+        a: usize,
+        b: usize,
     }
+
+    // print!("{}", lcm(a, b));
+
+    print!("{}", a * b / gcd(a, b));
 }
