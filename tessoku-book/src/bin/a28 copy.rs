@@ -20,4 +20,23 @@ fn main() {
         n: usize,
         ta_list: [(char, isize); n],
     }
+
+    let mut b = 0;
+
+    for (t, a) in ta_list {
+        match t {
+            '+' => b += a,
+            '-' => b -= a,
+            '*' => b *= a,
+            _ => {}
+        }
+
+        if b < 0 {
+            b += 10000;
+        }
+
+        b %= 10000;
+
+        println!("{}", b);
+    }
 }
