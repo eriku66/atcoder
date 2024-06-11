@@ -23,10 +23,13 @@ fn main() {
 
     // print!("{}", gcd(a, b));
 
-    for d in (1..a.min(b)).rev() {
-        if a % d == 0 && b % d == 0 {
-            println!("{}", d);
-            break;
+    while a > 0 && b > 0 {
+        if a > b {
+            a %= b;
+        } else {
+            b %= a;
         }
     }
+
+    print!("{}", a.max(b));
 }
