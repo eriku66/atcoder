@@ -20,26 +20,16 @@ fn main() {
         n: u32,
     }
 
-    let len = 3usize.pow(n);
+    let mut v = vec!["#".to_string()];
 
-    let mut ans = vec![vec!['#'; len]; len];
-
-    for c in 1..=n as usize {
-        let w_len = 3usize.pow((c as u32) - 1);
-        let step = w_len * 2 + w_len;
-
-        for i in (0..len).skip(w_len).step_by(step) {
-            for j in (0..len).skip(w_len).step_by(step) {
-                for i1 in i..i + w_len {
-                    for j1 in j..j + w_len {
-                        ans[i1][j1] = '.';
-                    }
-                }
-            }
-        }
+    for _ in 0..n {
+        let w = ".".repeat(v[0].len());
+        let a = v.iter().map(|row| row.repeat(3));
+        let b = v.iter().map(|row| format!("{}{}{}", row, w, row));
+        v = a.clone().chain(b).chain(a).collect();
     }
 
-    for row in ans {
-        println!("{}", row.iter().collect::<String>());
+    for row in v {
+        println!("{}", row);
     }
 }
