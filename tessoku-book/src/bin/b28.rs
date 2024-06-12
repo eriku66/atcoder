@@ -19,4 +19,20 @@ fn main() {
     input! {
         n: usize,
     }
+
+    let d = 1000000007;
+
+    let mut two_previous = 1;
+    let mut one_previous = 1;
+
+    for _ in 0..n - 2 {
+        let mut next = two_previous + one_previous;
+
+        next %= d;
+
+        two_previous = one_previous;
+        one_previous = next;
+    }
+
+    println!("{}", one_previous);
 }
