@@ -5,7 +5,7 @@
 線形探索法
 
 <details><summary>N進法</summary>
-xのiの位の求め方 x / N^i % N
+N進数xのiの位の求め方 x / N^i % N
 </details>
 
 ビット演算
@@ -35,3 +35,9 @@ xのiの位の求め方 x / N^i % N
 - 最長共通部分列問題
 - 編集距離（レーベンシュタイン距離）
   - [参考ページ](https://mathwords.net/hensyukyori)
+
+## 5章　数学的問題について
+
+素数判定
+
+ユークリッドの互除法
