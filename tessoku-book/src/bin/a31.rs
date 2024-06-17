@@ -19,4 +19,6 @@ fn main() {
     input! {
         n: usize,
     }
+
+    print!("{}", n / 3 + n / 5 - n / (3 * 5));
 }
