@@ -17,6 +17,7 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        n: usize,
+        h: usize,
+        w: usize,
     }
 }
