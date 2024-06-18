@@ -18,5 +18,27 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        k: usize,
+        a_list: [usize; k],
+    }
+
+    let mut l = vec![false; n + 1];
+
+    for i in 1..=n {
+        for &a in &a_list {
+            if i >= a {
+                l[i] = !l[i - a];
+            }
+
+            if l[i] {
+                break;
+            }
+        }
+    }
+
+    if l[n] {
+        print!("First");
+    } else {
+        print!("Second");
     }
 }
