@@ -21,22 +21,4 @@ fn main() {
         a: usize,
         b: usize,
     }
-
-    let mut l = vec![false; n + 1];
-
-    for i in 1..=n {
-        if i >= a {
-            l[i] = !l[i - a];
-        }
-
-        if i >= b && !l[i] {
-            l[i] = !l[i - b];
-        }
-    }
-
-    if l[n] {
-        print!("First");
-    } else {
-        print!("Second");
-    }
 }
