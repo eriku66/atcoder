@@ -18,5 +18,14 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        _h: usize,
+        _w: usize,
+        ab_list: [(Usize1, Usize1); n],
+    }
+
+    if ab_list.iter().fold(0, |acc, &(a, b)| acc ^ a ^ b) == 0 {
+        print!("Second");
+    } else {
+        print!("First");
     }
 }
