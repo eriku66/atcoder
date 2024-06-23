@@ -17,6 +17,18 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        n: usize,
+        n: Usize1,
+        k: usize,
+    }
+
+    if n * 2 > k {
+        print!("No");
+        return;
+    }
+
+    if k % 2 == 0 {
+        print!("Yes");
+    } else {
+        print!("No");
     }
 }
