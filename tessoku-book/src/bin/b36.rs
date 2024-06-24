@@ -18,5 +18,16 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        k: usize,
+        s: Chars,
     }
+
+    let on_count = s.iter().filter(|&&c| c == '1').count();
+
+    if n == on_count || (k.abs_diff(on_count) % 2 == 0) {
+        print!("Yes");
+        return;
+    }
+
+    print!("No");
 }
