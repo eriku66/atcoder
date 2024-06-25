@@ -18,5 +18,14 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        m: usize,
+        b: usize,
+        a_list: [usize; n],
+        c_list: [usize; m],
     }
+
+    print!(
+        "{}",
+        b * n * m + a_list.iter().sum::<usize>() * m + c_list.iter().sum::<usize>() * n
+    );
 }
