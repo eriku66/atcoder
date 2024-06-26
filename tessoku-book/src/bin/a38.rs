@@ -17,6 +17,18 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
+        d: usize,
         n: usize,
+        lrh_list: [(Usize1, Usize1, usize); n]
     }
+
+    let mut days = vec![24; d];
+
+    for &(l, r, h) in &lrh_list {
+        for i in l..=r {
+            days[i] = days[i].min(h);
+        }
+    }
+
+    print!("{}", days.iter().sum::<usize>());
 }
