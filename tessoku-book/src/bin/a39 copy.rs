@@ -20,4 +20,18 @@ fn main() {
         n: usize,
         mut lr_list: [(usize, usize); n],
     }
+
+    lr_list.sort_by(|a, b| a.1.cmp(&b.1));
+
+    let mut ans = 0;
+    let mut max = 0;
+
+    for (l, r) in lr_list {
+        if max <= l {
+            max = r;
+            ans += 1;
+        }
+    }
+
+    print!("{}", ans);
 }
