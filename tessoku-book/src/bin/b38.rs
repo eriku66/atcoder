@@ -18,5 +18,22 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        s_list: Chars,
     }
+
+    let mut l = vec![1; n];
+
+    for (i, &s) in s_list.iter().enumerate() {
+        if s == 'A' {
+            l[i + 1] = l[i] + 1;
+        }
+    }
+
+    for (i, &s) in s_list.iter().enumerate().rev() {
+        if s == 'B' {
+            l[i] = max(l[i], l[i + 1] + 1);
+        }
+    }
+
+    print!("{}", l.iter().sum::<usize>());
 }
