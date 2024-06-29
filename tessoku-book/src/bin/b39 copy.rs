@@ -22,14 +22,20 @@ fn main() {
         mut xy_list: [(Usize1, usize); n],
     }
 
-    xy_list.sort_unstable_by_key(|(_, y)| *y);
+    let mut used = vec![false; n];
 
     let mut ans = 0;
 
     for i in 0..d {
-        // 仕事を選択できない場合もあることに気を付ける
-        if let Some(max_i) = xy_list.iter().rposition(|&(x, _)| x <= i) {
-            ans += xy_list.remove(max_i).1;
+        if let Some((max_i, &(_, max_y))) = xy_list
+            .iter()
+            .enumerate()
+            .filter(|&(index, &(x, _))| !used[index] && x <= i)
+            .max_by_key(|(_, (_, y))| y)
+        {
+            used[max_i] = true;
+
+            ans += max_y;
         }
     }
 
