@@ -18,5 +18,6 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        s: Chars,
     }
 }
