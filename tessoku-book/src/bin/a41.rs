@@ -17,6 +17,16 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        n: usize,
+        _n: usize,
+        s: Chars,
     }
+
+    print!(
+        "{}",
+        if s.windows(3).any(|v| v[0] == v[1] && v[1] == v[2]) {
+            "Yes"
+        } else {
+            "No"
+        }
+    );
 }
