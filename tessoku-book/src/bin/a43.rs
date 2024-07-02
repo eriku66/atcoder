@@ -18,5 +18,19 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        l: usize,
+        ab_list: [(usize, char); n],
     }
+
+    let mut ans = 0;
+
+    for (a, b) in ab_list {
+        match b {
+            'E' => ans = ans.max(l - a),
+            'W' => ans = ans.max(a),
+            _ => {}
+        }
+    }
+
+    print!("{}", ans);
 }
