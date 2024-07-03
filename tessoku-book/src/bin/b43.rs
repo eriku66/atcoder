@@ -18,5 +18,17 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        m: usize,
+        a_list: [Usize1; m],
+    }
+
+    let mut scores = vec![m; n];
+
+    for a in a_list {
+        scores[a] -= 1;
+    }
+
+    for s in scores {
+        println!("{}", s);
     }
 }
