@@ -18,5 +18,35 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        q: usize,
+    }
+
+    let mut a_list = (1..=n).collect_vec();
+    let mut is_order_reversed = false;
+
+    for _ in 0..q {
+        input! {query_no: usize}
+        match query_no {
+            1 => {
+                input! {mut x: Usize1, y: usize}
+
+                if is_order_reversed {
+                    x = n - 1 - x;
+                }
+
+                a_list[x] = y;
+            }
+            2 => is_order_reversed = !is_order_reversed,
+            3 => {
+                input! {mut x: Usize1}
+
+                if is_order_reversed {
+                    x = n - 1 - x;
+                }
+
+                println!("{}", a_list[x]);
+            }
+            _ => {}
+        }
     }
 }
