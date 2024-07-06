@@ -18,5 +18,20 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        a_list: [[usize; n]; n],
+        q: usize,
+        queries: [(usize, Usize1, Usize1); q],
+    }
+
+    let mut i_list = (0..n).collect_vec();
+
+    for (t, x, y) in queries {
+        match t {
+            1 => i_list.swap(x, y),
+            2 => {
+                println!("{}", a_list[i_list[x]][y]);
+            }
+            _ => {}
+        }
     }
 }
