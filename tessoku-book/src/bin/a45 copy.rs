@@ -21,4 +21,14 @@ fn main() {
         c: char,
         a_list: Chars,
     }
+
+    let value = |h: char| match h {
+        'R' => 1,
+        'B' => 2,
+        _ => 0,
+    };
+
+    let sum = a_list.iter().map(|&c| value(c)).sum::<usize>();
+
+    print!("{}", if value(c) == sum % 3 { "Yes" } else { "No" });
 }
