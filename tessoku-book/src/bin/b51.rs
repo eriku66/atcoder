@@ -17,6 +17,20 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        n: usize,
+        s: Chars,
+    }
+
+    let mut stack = Vec::with_capacity(s.len());
+
+    for (i, &c) in s.iter().enumerate().map(|(i, c)| (i + 1, c)) {
+        match c {
+            '(' => {
+                stack.push(i);
+            }
+            ')' => {
+                println!("{} {}", stack.pop().unwrap(), i);
+            }
+            _ => {}
+        }
     }
 }
