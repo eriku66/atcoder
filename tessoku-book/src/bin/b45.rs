@@ -17,6 +17,10 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        n: usize,
+        a: isize,
+        b: isize,
+        c: isize,
     }
+
+    print!("{}", if a + b + c == 0 { "Yes" } else { "No" });
 }
