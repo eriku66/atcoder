@@ -23,18 +23,19 @@ fn main() {
         mut xy_list: [(Usize1, usize); n],
     }
 
-    xy_list.sort_unstable_by_key(|&(x, _)| x);
+    let mut y_d_map = vec![vec![]; d];
+
+    for (x, y) in xy_list {
+        y_d_map[x].push(y);
+    }
 
     let mut queue = BinaryHeap::with_capacity(n);
 
-    let mut xy_i = 0;
-
     let mut ans = 0;
 
-    for i in 0..d {
-        while xy_i < n && xy_list[xy_i].0 <= i {
-            queue.push(xy_list[xy_i].1);
-            xy_i += 1;
+    for y_list in y_d_map {
+        for y in y_list {
+            queue.push(y);
         }
 
         ans += queue.pop().unwrap_or(0);
