@@ -9,6 +9,7 @@ use proconio::{
 };
 #[allow(unused_imports)]
 use std::cmp::{max, min};
+use std::collections::BTreeSet;
 #[allow(unused_imports)]
 use std::collections::{HashMap, HashSet, VecDeque};
 #[allow(unused_imports)]
@@ -17,6 +18,7 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        n: usize,
+        q: usize,
+        queries: [(usize, usize); q],
     }
 }
