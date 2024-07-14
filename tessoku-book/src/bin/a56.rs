@@ -17,6 +17,13 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        n: usize,
+        _n: usize,
+        q: usize,
+        s: String,
+        abcd_list: [(Usize1, Usize1, Usize1, Usize1); q],
+    }
+
+    for (a, b, c, d) in abcd_list {
+        println!("{}", if s[a..=b] == s[c..=d] { "Yes" } else { "No" });
     }
 }
