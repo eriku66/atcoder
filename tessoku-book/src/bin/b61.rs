@@ -18,5 +18,23 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        m: usize,
+        ab_list: [(usize, usize); m],
     }
+
+    let mut l = vec![HashSet::new(); n + 1];
+
+    for (a, b) in ab_list {
+        l[a].insert(b);
+        l[b].insert(a);
+    }
+
+    print!(
+        "{}",
+        l.iter()
+            .enumerate()
+            .max_by_key(|(_, set)| set.len())
+            .unwrap()
+            .0
+    );
 }
