@@ -31,9 +31,13 @@ fn main() {
         g[b].push(a);
     }
 
+    let mut visited = vec![false; n];
+
+    dfs(0, &g, &mut visited);
+
     print!(
         "{}",
-        if dfs(0, &g, vec![false; n]).iter().all(|&b| b) {
+        if visited.iter().all(|&b| b) {
             "The graph is connected."
         } else {
             "The graph is not connected."
@@ -41,14 +45,12 @@ fn main() {
     );
 }
 
-fn dfs(pos: usize, g: &[Vec<usize>], mut visited: Vec<bool>) -> Vec<bool> {
+fn dfs(pos: usize, g: &[Vec<usize>], visited: &mut [bool]) {
     visited[pos] = true;
 
     for &next in &g[pos] {
         if !visited[next] {
-            visited = dfs(next, g, visited);
+            dfs(next, g, visited);
         }
     }
-
-    visited
 }
