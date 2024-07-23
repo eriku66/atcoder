@@ -13,10 +13,13 @@ use std::cmp::{max, min};
 use std::collections::{HashMap, HashSet, VecDeque};
 #[allow(unused_imports)]
 use std::iter::FromIterator;
+use std::{cmp::Reverse, collections::BinaryHeap};
 
 #[fastout]
 fn main() {
     input! {
         n: usize,
+        m: usize,
+        abc_list: [(Usize1, Usize1, isize); m],
     }
 }
