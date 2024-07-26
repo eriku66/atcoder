@@ -18,5 +18,19 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        mut a_list: [usize; n],
+        mut b_list: [usize; n],
     }
+
+    a_list.sort_unstable();
+    b_list.sort_unstable_by(|x, &y| y.cmp(x));
+
+    print!(
+        "{}",
+        a_list
+            .iter()
+            .zip(b_list)
+            .map(|(&a, b)| a * b)
+            .sum::<usize>()
+    );
 }
