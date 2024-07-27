@@ -37,6 +37,8 @@ use std::cmp::{max, min};
 use std::collections::{HashMap, HashSet, VecDeque};
 #[allow(unused_imports)]
 use std::iter::FromIterator;
+#[allow(unused_imports)]
+use superslice::Ext;
 
 #[fastout]
 fn main() {
