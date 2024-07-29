@@ -22,4 +22,23 @@ fn main() {
         mut a_list: [isize; n],
         bk_list: [(isize, usize); q],
     }
+
+    a_list.sort_unstable();
+
+    for (b, k) in bk_list {
+        let mut l = 0;
+        let mut r = n - k;
+
+        while l < r {
+            let mid = (l + r) / 2;
+
+            if b - a_list[mid] < a_list[mid + k] - b {
+                r = mid;
+            } else {
+                l = mid + 1;
+            }
+        }
+
+        println!("{}", max(b - a_list[l], a_list[l + k - 1] - b));
+    }
 }
