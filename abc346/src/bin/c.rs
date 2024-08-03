@@ -16,7 +16,19 @@ use std::iter::FromIterator;
 
 #[fastout]
 fn main() {
-    input!{
+    input! {
         n: usize,
+        k: usize,
+        a_list: [usize; n],
     }
+
+    let mut a_set = HashSet::with_capacity(n);
+
+    for a in a_list {
+        if a <= k {
+            a_set.insert(a);
+        }
+    }
+
+    print!("{}", (1 + k) * k / 2 - a_set.iter().sum::<usize>());
 }
