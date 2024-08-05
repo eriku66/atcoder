@@ -17,17 +17,15 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        mut n: usize,
+        mut n: Usize1,
     }
-
-    n -= 1;
 
     let mut ans = Vec::new();
 
     for i in (0..=((n as f64).ln() / 5f64.ln()).floor() as u32).rev() {
         let d = 5usize.pow(i);
         let v = n / d * d;
-        ans.push((v / d) * 2);
+        ans.push(v / d * 2);
         n -= v;
     }
 
