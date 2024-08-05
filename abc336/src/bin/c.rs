@@ -17,6 +17,19 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        n: usize,
+        mut n: usize,
     }
+
+    n -= 1;
+
+    let mut ans = Vec::new();
+
+    for i in (0..=((n as f64).ln() / 5f64.ln()).floor() as u32).rev() {
+        let d = 5usize.pow(i);
+        let v = n / d * d;
+        ans.push((v / d) * 2);
+        n -= v;
+    }
+
+    print!("{}", ans.iter().map(|v| v.to_string()).collect::<String>());
 }
