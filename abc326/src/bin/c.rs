@@ -20,5 +20,17 @@ use superslice::Ext;
 fn main() {
     input! {
         n: usize,
+        m: usize,
+        mut a_list: [usize; n],
     }
+
+    a_list.sort_unstable();
+
+    let mut ans = 0;
+
+    for i in 0..n {
+        ans = max(ans, a_list.lower_bound(&(a_list[i] + m)) - i);
+    }
+
+    print!("{}", ans)
 }
