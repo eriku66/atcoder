@@ -18,5 +18,32 @@ use std::iter::FromIterator;
 fn main() {
     input! {
         n: usize,
+        t: usize,
+        ab_list: [(Usize1, usize); t],
+    }
+
+    let mut m = HashMap::new();
+    let mut count = 1;
+    m.insert(0, n);
+
+    let mut l = vec![0; n];
+
+    for (a, b) in ab_list {
+        let v = m.get_mut(&l[a]).unwrap();
+        *v -= 1;
+
+        if *v == 0 {
+            count -= 1;
+            m.remove(&l[a]);
+        }
+
+        l[a] += b;
+
+        *m.entry(l[a]).or_insert_with(|| {
+            count += 1;
+            0
+        }) += 1;
+
+        println!("{}", count);
     }
 }
