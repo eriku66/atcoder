@@ -19,6 +19,8 @@ use superslice::Ext;
 #[fastout]
 fn main() {
     input! {
-        n: usize,
+        x: String,
     }
+
+    print!("{}", x.trim_end_matches('0').trim_end_matches('.'));
 }
