@@ -16,7 +16,7 @@ use std::iter::FromIterator;
 #[allow(unused_imports)]
 use superslice::Ext;
 
-// #[fastout]
+#[fastout]
 fn main() {
     input! {
         n: usize,
@@ -24,29 +24,9 @@ fn main() {
         r_list: [u32; n],
     }
 
-    let n_u32 = n as u32;
-
-    for a in "1".repeat(n).parse::<u32>().unwrap()..="5".repeat(n).parse::<u32>().unwrap() {
-        let a_vec = (0..n_u32)
-            .map(|i| a / 10_u32.pow(n_u32 - i - 1) % 10)
-            .collect_vec();
-
-        if a_vec
-            .iter()
-            .enumerate()
-            .any(|(i, &v)| v == 0 || v > r_list[i])
-        {
-            continue;
-        }
-
-        if a_vec.iter().sum::<u32>() % k == 0 {
-            println!(
-                "{}",
-                a_vec
-                    .iter()
-                    .filter_map(|&v| char::from_digit(v, 10))
-                    .join(" ")
-            );
+    for a_list in r_list.into_iter().map(|r| 1..=r).multi_cartesian_product() {
+        if a_list.iter().sum::<u32>() % k == 0 {
+            println!("{}", a_list.into_iter().format(" "));
         }
     }
 }
