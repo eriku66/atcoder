@@ -16,9 +16,36 @@ use std::iter::FromIterator;
 #[allow(unused_imports)]
 use superslice::Ext;
 
-#[fastout]
+// #[fastout]
 fn main() {
     input! {
         n: usize,
+        as_list: [(isize, char); n],
     }
+
+    let mut l = -1;
+    let mut r = -1;
+    let mut ans = 0;
+
+    for (a, s) in as_list {
+        match s {
+            'L' => {
+                if l != -1 {
+                    ans += a.abs_diff(l);
+                }
+
+                l = a;
+            }
+            'R' => {
+                if r != -1 {
+                    ans += a.abs_diff(r);
+                }
+
+                r = a;
+            }
+            _ => {}
+        }
+    }
+
+    print!("{}", ans);
 }
