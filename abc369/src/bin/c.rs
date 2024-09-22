@@ -16,9 +16,28 @@ use std::iter::FromIterator;
 #[allow(unused_imports)]
 use superslice::Ext;
 
-#[fastout]
 fn main() {
     input! {
         n: usize,
+        a_list: [isize; n]
     }
+
+    let mut ans = 0;
+    let mut continue_count = 0;
+    let mut pre_diff = -1;
+
+    for (a, b) in a_list.iter().tuple_windows() {
+        let diff = b - a;
+
+        if diff == pre_diff {
+            continue_count += 1;
+        } else {
+            continue_count = 1;
+            pre_diff = diff;
+        }
+
+        ans += continue_count;
+    }
+
+    print!("{}", ans + n);
 }
