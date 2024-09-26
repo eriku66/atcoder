@@ -19,5 +19,18 @@ use superslice::Ext;
 fn main() {
     input! {
         n: usize,
+        m: usize,
+        ab_list: [(Usize1, char); m],
+    }
+
+    let mut has_tarou = vec![false; n];
+
+    for (a, b) in ab_list {
+        if !has_tarou[a] && b == 'M' {
+            has_tarou[a] = true;
+            println!("Yes");
+        } else {
+            println!("No")
+        }
     }
 }
