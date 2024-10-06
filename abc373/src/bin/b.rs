@@ -18,6 +18,18 @@ use superslice::Ext;
 
 fn main() {
     input! {
-        n: usize,
+        s: Chars,
     }
+
+    print!(
+        "{}",
+        s.iter()
+            .enumerate()
+            .map(|(i, &c)| (c, i))
+            .sorted_by_key(|&(c, _)| c)
+            .map(|(_, i)| i)
+            .tuple_windows()
+            .map(|(i, j)| i.abs_diff(j))
+            .sum::<usize>()
+    );
 }
