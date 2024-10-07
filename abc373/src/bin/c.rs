@@ -19,5 +19,12 @@ use superslice::Ext;
 fn main() {
     input! {
         n: usize,
+        mut a_list: [isize; n],
+        mut b_list: [isize; n],
     }
+
+    a_list.sort_unstable();
+    b_list.sort_unstable();
+
+    print!("{}", a_list.last().unwrap() + b_list.last().unwrap())
 }
