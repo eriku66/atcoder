@@ -19,5 +19,32 @@ use superslice::Ext;
 fn main() {
     input! {
         n: usize,
+        q: usize,
+        mut s: String,
+        xc_list: [(Usize1, String); q],
+    }
+
+    let mut abc_count = s.matches("ABC").count();
+
+    let contains_abc = |s: &str, x| {
+        x >= 2 && s[x - 2..=x].eq("ABC")
+            || x >= 1 && x <= n - 2 && s[x - 1..=x + 1].eq("ABC")
+            || x <= n - 3 && s[x..=x + 2].eq("ABC")
+    };
+
+    for (x, c) in xc_list {
+        let is_changed = s[x..=x] != c;
+
+        if is_changed && contains_abc(&s, x) {
+            abc_count -= 1;
+        }
+
+        s.replace_range(x..=x, &c);
+
+        if is_changed && contains_abc(&s, x) {
+            abc_count += 1;
+        }
+
+        println!("{}", abc_count);
     }
 }
