@@ -19,5 +19,21 @@ use superslice::Ext;
 fn main() {
     input! {
         n: usize,
+        mut xy_list: [(isize, isize); n],
     }
+
+    xy_list.push((0, 0));
+
+    let mut px = 0;
+    let mut py = 0;
+    let mut ans = 0.;
+
+    for (x, y) in xy_list {
+        ans += (((px - x).abs() * (px - x).abs() + (py - y).abs() * (py - y).abs()) as f64).sqrt();
+
+        px = x;
+        py = y;
+    }
+
+    print!("{}", ans);
 }
