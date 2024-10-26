@@ -29,7 +29,7 @@ fn main() {
     let mut ans = 0.;
 
     for (x, y) in xy_list {
-        ans += (((px - x).abs() * (px - x).abs() + (py - y).abs() * (py - y).abs()) as f64).sqrt();
+        ans += (((px - x).abs().pow(2) + (py - y).abs().pow(2)) as f64).sqrt();
 
         px = x;
         py = y;
