@@ -19,5 +19,23 @@ use superslice::Ext;
 fn main() {
     input! {
         n: usize,
+        qr_list: [(usize, usize); n],
+        qc: usize,
+        td_list: [(Usize1, usize); qc],
+    }
+
+    let calc_closest_date = |t: usize, d: usize| -> usize {
+        let (q, r) = qr_list[t];
+        let pre_max_date = d / q * q + r;
+
+        if d <= pre_max_date {
+            return pre_max_date;
+        }
+
+        return pre_max_date + q;
+    };
+
+    for (t, d) in td_list {
+        println!("{}", calc_closest_date(t, d))
     }
 }
