@@ -19,5 +19,26 @@ use superslice::Ext;
 fn main() {
     input! {
         n: usize,
+        wx_list: [(usize, usize); n],
     }
+
+    let mut ans = 0;
+
+    for base_h in 0..24 {
+        let mut total = 0;
+
+        for &(w, x) in wx_list.iter() {
+            let h = (base_h + x) % 24;
+
+            if 9 <= h && h <= 17 {
+                total += w;
+            }
+        }
+
+        if total > ans {
+            ans = total;
+        }
+    }
+
+    print!("{}", ans);
 }
