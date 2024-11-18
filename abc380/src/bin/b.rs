@@ -18,6 +18,11 @@ use superslice::Ext;
 
 fn main() {
     input! {
-        n: usize,
+        s: String,
     }
+
+    print!(
+        "{}",
+        s.split("|").map(|h| h.len()).filter(|&c| c > 0).join(" ")
+    );
 }
